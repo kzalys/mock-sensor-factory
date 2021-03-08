@@ -1,0 +1,35 @@
+[
+  {
+    "sensorGroup": "sensor1",
+    "pushInterval": 1000,
+    "port": 8040,
+    "measurements": {
+      "pressure": ["avg", "max", "min", "current"]
+    }
+  },
+  {
+    "sensorGroup": "sensor2",
+    "pushInterval": 1000,
+    "port": 8041,
+    "measurements": {
+      "pressure": ["avg", "max", "min", "current"]
+    }
+  },
+  {
+    "sensorGroup": "sensor3",
+    "pushInterval": 4000,
+    "port": 8042,
+    "measurements": {
+      "temperature": ["avg", "max", "min", "current"],
+      "pressure": ["avg", "max", "min", "current"]
+    }
+  },
+  {
+    "sensorGroup": "sensor4",
+    "pushInterval": 10000,
+    "port": 8043,
+    "measurements": {
+      "temperature": ["avg", "max", "min", "current"]
+    }
+  }
+]
