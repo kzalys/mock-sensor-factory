@@ -10,8 +10,8 @@ import (
 )
 
 const sensorDefinitions = "sensors.json"
-const influxHost = "http://localhost:8086"
-const influxToken = "5PxwxHZrfsvCt1m7I2xD4YO7Zz5v_RCj0MZToFOw8t5fcv-CNVVj3DNPGfAWehyaaU__1TtUW0nFhoDeKodaqg=="
+const influxHost = "http://localhost:8001"
+const influxToken = "l2u3KdkqeCdLagKTNkt_DSgiy0p3yhiDljkuNAmuAVHmIpUlWVvaea03zKw6SnghTeld80o4wEtrD_ytq1O8dw=="
 const influxOrg = "iot"
 const influxBucket = "iot"
 

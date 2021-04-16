@@ -18,7 +18,7 @@ import (
 type Config struct {
 	SensorGroup   string              `json:"sensorGroup"`
 	SensorAddress string              `json:"sensorAddress"`
-	PushInterval  int                 `json:"pushInterval"`
+	PushInterval  int64               `json:"pushInterval"`
 	Port          int                 `json:"port"`
 	Measurements  map[string][]string `json:"measurements"`
 }
@@ -87,6 +87,7 @@ func (s *MockSensor) Run() {
 					"sensor_group":   s.config.SensorGroup,
 					"sensor_address": s.config.SensorAddress,
 				}, readings, time.Now()))
+				s.emitCreatedDatapoints(1)
 			}
 			s.influxWriteApi.Flush()
 
@@ -108,6 +109,14 @@ func (s *MockSensor) shutdown() {
 	if err := s.server.Shutdown(ctx); err != nil {
 		log.Fatalf("[%s] Could not shutdown sensor server: %s\n", s.config.SensorGroup, err.Error())
 	}
+}
+
+func (s *MockSensor) emitCreatedDatapoints(createdDatapointsCount int64) {
+	s.influxWriteApi.WritePoint(influxdb2.NewPoint("sensor_status", map[string]string{
+		"sensor_group": s.config.SensorGroup,
+	}, map[string]interface{}{
+		"created_datapoints": createdDatapointsCount,
+	}, time.Now()))
 }
 
 func (s *MockSensor) handleGetStatus(ctx *gin.Context) {
